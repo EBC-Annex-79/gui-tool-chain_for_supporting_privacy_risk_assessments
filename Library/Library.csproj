@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <!-- <OutputType>Exe</OutputType> -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="RDF\" />
+    <Folder Include="Schemas\" />
+    <Folder Include="PrivacyModel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="dotNetRDF" Version="2.6.1" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,224 @@
+﻿@using System.Web;
+@using Microsoft.AspNetCore.Html
+@using Microsoft.AspNetCore.Mvc;
+@functions {
+    void GeneradeMenuItem(SupportedType supportedType)
+    {
+        if (supportedType.Clickable)
+        {
+            generateClickableMenuItem(supportedType);
+        }
+        else
+        {
+            generateNoneClickableMenuItem(supportedType);
+        }
+    }
+
+    void generateNoneClickableMenuItem(SupportedType supportedType)
+    {
+        <a href="#@supportedType.Name" class="list-group-item" data-toggle="collapse" data-parent="#sidebarleft"
+            aria-expanded="false">
+            <span class="hidden-sm-down">@supportedType.Name</span>
+        </a>
+        <div class="collapse" id="@supportedType.Name">
+            @foreach (SupportedType sub_item in supportedType.GetSubDataStrucktor())
+            {
+                GeneradeMenuItem(sub_item);
+            }
+        </div>
+    }
+
+    private void generateClickableMenuItem(SupportedType supportedType)
+    {
+        if (supportedType.GetSubDataStrucktor().Count == 0)
+        {
+            <a href="javascript:antiveClass('@supportedType.Name');" id="@supportedType.Name" class="list-group-item"
+                data-parent="#@supportedType.Name">@supportedType.Name</a>
+        }
+        else
+        {
+            <a href="#sub@(supportedType.Name)" onclick="antiveClass('@supportedType.Name')" id="@supportedType.Name"
+                class="list-group-item" data-toggle="collapse" data-parent="#sidebarleft" aria-expanded="false">
+                <span class="hidden-sm-down">@supportedType.Name</span>
+            </a>
+            <div class="collapse" id="sub@(supportedType.Name)">
+                @foreach (SupportedType sub_item in supportedType.GetSubDataStrucktor())
+                {
+                    GeneradeMenuItem(sub_item);
+                }
+            </div>
+        }
+    }
+}
+
+<script>
+    var dictContextAndData = JSON.parse(@Html.Raw(Json.Serialize(ViewBag.DictContextAndData)));
+
+    var activeClass = null;
+    var activeSupportedType = null;
+    var analysesResults = null;
+
+    function antiveClass(pressedClass) {
+        var btn = document.getElementById(pressedClass);
+        if (btn != null) {
+            btn.classList.toggle("active-item");
+            if (btn.hasAttribute("onclick") && btn.classList.contains("active-item") && !btn.classList.contains("collapsed")) {
+                btn.classList.toggle("active-item");
+                var old_btn = document.getElementById(activeClass);
+                if (old_btn != null) old_btn.classList.remove("active-item");
+                activeClass = null;
+                activeSupportedType = null;
+                return;
+            }
+        }
+
+        if (activeClass == pressedClass) {
+            pressedClass = null;
+        }
+        else if (activeClass != pressedClass) {
+            var old_btn = document.getElementById(activeClass);
+            if (old_btn != null) old_btn.classList.remove("active-item");
+        }
+
+        activeClass = pressedClass;
+        activeSupportedType = dictContextAndData[activeClass];
+        @* activeSupportedType = {"Attributes" : dictContextAndData[activeClass]}; *@
+        localStorage.setItem("activeClass", activeClass);
+    }
+
+    function runAnalysesOfGraph() {
+        const bothAnalysesBtn = document.getElementById('bothAnalysesBtn');
+        const btnAnlyses = document.getElementById('btnAnlyses');
+        bothAnalysesBtn.classList.add("hidden");
+        btnAnlyses.classList.add("disable");
+        btnAnlyses.innerHTML = "Analysis Running";
+
+        if (links.length > 0) {
+            var postData = {
+            dataAttributes: attributes,
+            links: links
+        }; 
+            $.ajax({
+                url: '@Url.Action("RunAnalysesOfGraph")',
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(postData)//{attributes: attributes, links: links}
+                }).done(function (result) {
+                    if ("graph" in result && "privacy_report" in result)
+                    {
+                        analysesResults = result;
+                        drawDotFile(result["graph"]);
+                        toggleBoards();
+                        bothAnalysesBtn.classList.remove("hidden");
+                    }
+                    btnAnlyses.innerHTML = "Run Analysis";
+                });
+        }
+    }
+
+</script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Risk Assessment</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-sidermenu.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/editor.css" />
+</head>
+
+<body>
+    @* <div class="container-fluid"> *@
+    <div class="row col-12">
+        <div class="col-md-2 col-lg-2 col-xs-2 p-l-0 p-r-0 collapse nopadding show" id="sidebarleft">
+            <div class="list-group panel">
+                @{
+                    var viewModel = (LinkedList<SupportedType>)ViewBag.DataTypes;
+
+                    foreach (SupportedType item in viewModel)
+                    {
+                        GeneradeMenuItem(item);
+                    }
+                }
+            </div>
+        </div>
+        <main class="col-md-8 col-lg-8 p-l-2 p-t-2">
+            <div class="page-header">
+                <h1 id="title" class="display-4">Privacy Risk Assessment</h1>
+            </div>
+            <div class="content">
+                @RenderBody()
+            </div>
+        </main>
+        <div class="col-2 col-xl-2 col-xs-2" id="sidebar">
+            <div id="EditorProperties">
+                <h2>Properties</h2>
+                <div id="dataProperties">
+                </div>
+            </div>
+            <div class="hidden" id="viewProperties">
+                <h2>Results of analysis</h2>
+                <div id="engine">
+                <p>Please select your engine:</p>
+                <input type="radio" id="circo" name="engine" checked="checked" value="circo">
+                <label for="circo">circo</label><br>
+                <input type="radio" id="dot" name="engine" value="dot">
+                <label for="dot">dot</label><br>
+                <input type="radio" id="twopi" name="engine" value="twopi">
+                <label for="twopi">twopi</label><br>
+                <input type="radio" id="fdp" name="engine" value="fdp">
+                <label for="fdp">fdp</label><br>
+                <input type="radio" id="neato" name="engine" value="neato">
+                <label for="neato">neato</label><br>
+                @* <input type="radio" id="patchwork" name="engine" value="patchwork"> *@
+                @* <label for="patchwork">patchwork</label><br> *@
+                <input type="radio" id="osage" name="engine" value="osage">
+                <label for="osage">osage</label><br>
+                </div>
+                <div id="export">
+                    <h2>Export results</h2>
+                    <button type="button" onClick="storeGraph()" id="btnStoreGraph" class="btn btn-primary">Download Graph</button>
+                    <button type="button" onClick="storePrivacyReport()" id="btnStoreReport" class="btn btn-primary">Download Privacy Report</button>
+                </div>
+            </div>
+            <div id="analysesBtn">
+                <h2>Analysis</h2>
+                <div id="EditorAnalysesBtn">
+                    <button type="button" onClick="runAnalysesOfGraph()" id="btnAnlyses" class="btn btn-primary">Run Analysis</button>
+                </div>
+                <div class="hidden" id="ViewAnalysesBtn">
+                    <button type="button" onClick="redrawDotFile()" id="btnRedraw" class="btn btn-primary">Redrew View</button>
+                </div>
+            <div class="hidden" id="bothAnalysesBtn">
+                <button type="button" class="btn btn-primary" onClick="toggleBoards()" id="btnShowEditor" class="btn btn-primary">Change Editor</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    @* </div> *@
+    <footer>
+        <div class="container-fluid">
+            @* &copy; 2021 - sds - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> *@
+        </div>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap-sidermenu.js"></script>
+        <script src="~/lib/viz.js/viz.js"></script>
+        <script src="~/lib/viz.js/full.render.js"></script>
+        <script src="~/lib/d3/d3.min.js"></script>
+        <script src="~/lib/viz.js/svg-pan-zoom.min.js"></script>
+        @* <script src="~/lib/jspdf/jspdf.min.js"></script> *@
+
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/js/svgEditor.js"></script>
+        <script src="~/js/dot.js"></script>
+        @RenderSection("Scripts", required: false)
+    </footer>
+</body>
+
+</html>

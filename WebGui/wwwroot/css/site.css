@@ -1,0 +1,247 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.board {
+  position: absolute;
+  /* width: 60%; */
+}
+
+.page-header {
+  height: 67px;
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+  /* Vertically center the text there */
+}
+
+.left {
+  height: 200px;
+  float: left;
+}
+
+#sidebarleft {
+  width: 100%;
+  height: 100vh;
+  background-color: #333;
+  overflow-y: auto;
+  overflow-x: auto;
+  padding-right:0%;
+}
+
+#sidebarleft .list-group-item {
+  border-radius: 0;
+  background-color: #333;
+  color: #ccc;
+  border-left: 0;
+  border-right: 0;
+  border-color: #2c2c2c;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+/* highlight active menu */
+#sidebarleft .list-group-item:not(.collapsed) {
+  /* background-color: #222; */
+}
+
+/* closed state */
+#sidebarleft .list-group .list-group-item[aria-expanded="false"]::after {
+  content: " \f0d7";
+  font-family: FontAwesome;
+  display: inline;
+  text-align: right;
+  padding-left: 5px;
+}
+
+/* open state */
+#sidebarleft .list-group .list-group-item[aria-expanded="true"] {
+  /* background-color: #222; */
+}
+
+.active-item {
+  background-color: #222 !important;
+}
+
+#sidebarleft .list-group .list-group-item[aria-expanded="true"]::after {
+  content: " \f0da";
+  font-family: FontAwesome;
+  display: inline;
+  text-align: right;
+  padding-left: 5px;
+}
+
+/* level 1*/
+#sidebarleft .list-group .collapse .list-group-item {
+  padding-left: 20px;
+}
+
+/* level 2*/
+#sidebarleft .list-group .collapse>.collapse .list-group-item {
+  padding-left: 30px;
+}
+
+/* level 3*/
+#sidebarleft .list-group .collapse>.collapse>.collapse .list-group-item {
+  padding-left: 40px;
+}
+
+@media (max-width:48em) {
+
+  /* overlay sub levels on small screens */
+  #sidebarleft .list-group .collapse.in,
+  #sidebarleft .list-group .collapsing {
+    position: absolute;
+    z-index: 1;
+    width: 190px;
+  }
+
+  #sidebarleft .list-group>.list-group-item {
+    text-align: center;
+    padding: .75rem .5rem;
+    min-width: 39px;
+  }
+
+  /* hide caret icons of top level when collapsed */
+  #sidebarleft .list-group>.list-group-item[aria-expanded="true"]::after,
+  #sidebarleft .list-group>.list-group-item[aria-expanded="false"]::after {
+    display: none;
+  }
+}
+
+/* change transition animation to width when entire sidebar is toggled */
+#sidebarleft.collapse {
+  -webkit-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease;
+  -webkit-transition-duration: .2s;
+  -o-transition-duration: .2s;
+  transition-duration: .2s;
+}
+
+#sidebarleft.collapsing {
+  opacity: 0.8;
+  width: 0;
+  -webkit-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-property: width;
+  -o-transition-property: width;
+  transition-property: width;
+
+}
+
+.hidden{
+  visibility: hidden;
+}
+
+.disabled{
+  pointer-events: none;
+}
+
+.viewboard {
+  height: 99%;
+  width: 100%;
+  z-index: 1;
+  overflow: hidden;
+  /* width: 60%; */
+}
+
+#viewboard svg {
+  height: 93%;
+  width: 100%;
+  /* width: auto; */
+}
+
+
+#analysesBtn{
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 10px;
+}
+
+#viewProperties{
+  position: absolute;
+}
+
+#EditorProperties{
+  position: absolute;
+}
+
+/* #sidebar{
+  border-left: solid;
+  border-left-color: #2c2c2c;
+} */

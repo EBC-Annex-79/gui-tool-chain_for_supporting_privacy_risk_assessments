@@ -1,0 +1,161 @@
+@prefix : <https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vunl2: <https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#> .
+@base <https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#> .
+
+<https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#> rdf:type owl:Ontology ;
+                                                               owl:imports <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.w3.org/2002/07/owl#topObjectProperty
+owl:topObjectProperty rdfs:domain vunl2:Constraint ;
+                      rdfs:range vunl2:Context .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#creates
+<https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#creates> rdfs:domain <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Transformation> ;
+                                                                   rdfs:range <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Data> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#feeds
+<https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#feeds> rdfs:domain vunl2:Constraint ,
+                                                                             vunl2:TimeResolution ;
+                                                                 rdfs:range vunl2:Constraint .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#star
+<https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#star> rdfs:domain vunl2:Context ;
+                                                                rdfs:range vunl2:Context .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#has
+vunl2:has rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:domain vunl2:Context ;
+          rdfs:range <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Data> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#spatialInput
+vunl2:spatialInput rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdfs:domain vunl2:SpatialResolution ;
+                   rdfs:range vunl2:Context .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#spatialOutput
+vunl2:spatialOutput rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty ;
+                    rdfs:domain vunl2:SpatialResolution ;
+                    rdfs:range vunl2:Context .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#spatialRequirement
+vunl2:spatialRequirement rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf owl:topObjectProperty ;
+                         rdfs:domain vunl2:Constraint ;
+                         rdfs:range vunl2:SpatialResolution .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.w3.org/2002/07/owl#topDataProperty
+owl:topDataProperty rdfs:subPropertyOf vunl2:description .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#TemplateCount
+vunl2:TemplateCount rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:domain <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Data> ,
+                                <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#PrivacyRisk> ;
+                    rdfs:range xsd:int .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#TemporalResolution
+vunl2:TemporalResolution rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf owl:topDataProperty ;
+                         rdfs:domain <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> ;
+                         rdfs:range xsd:double .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#TimeInput
+vunl2:TimeInput rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain vunl2:TimeResolution ;
+                rdfs:range xsd:double .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#TimeOutput
+vunl2:TimeOutput rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdfs:domain vunl2:TimeResolution ;
+                 rdfs:range xsd:double .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#description
+vunl2:description rdf:type owl:DatatypeProperty ;
+                  rdfs:domain <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#PrivacyRisk> ;
+                  rdfs:range xsd:string .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#name
+vunl2:name rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdfs:domain <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Data> ,
+                       <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#PrivacyAttack> ,
+                       <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#PrivacyRisk> ,
+                       <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Context> ,
+                       <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Transformation> ;
+           rdfs:range xsd:string .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#privacyRiskScore
+vunl2:privacyRiskScore rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf owl:topDataProperty ;
+                       rdfs:domain <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#PrivacyRisk> ;
+                       rdfs:range xsd:int .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Data
+<https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Data> owl:disjointWith vunl2:Context .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#Constraint
+vunl2:Constraint rdf:type owl:Class .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#Context
+vunl2:Context rdf:type owl:Class .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#SpatialResolution
+vunl2:SpatialResolution rdf:type owl:Class .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#TimeResolution
+vunl2:TimeResolution rdf:type owl:Class .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#TimeResolutionLinear
+vunl2:TimeResolutionLinear rdf:type owl:Class ;
+                           rdfs:subClassOf vunl2:TimeResolution .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#TimeResolutionPair
+vunl2:TimeResolutionPair rdf:type owl:Class ;
+                         rdfs:subClassOf vunl2:TimeResolution .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

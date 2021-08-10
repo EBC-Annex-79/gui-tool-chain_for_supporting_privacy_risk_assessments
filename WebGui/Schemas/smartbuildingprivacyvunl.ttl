@@ -1,0 +1,618 @@
+@prefix : <https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vunl: <https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#> .
+@base <https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#> .
+
+<https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#> rdf:type owl:Ontology ;
+                                                                          owl:imports <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl> ,
+                                                                                      <https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#> .
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#External
+<https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#External> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Data> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Graph
+<https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Graph> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Data> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Metadata
+<https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Metadata> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Data> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries
+<https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> rdfs:subClassOf <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Data> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Atrium_Room
+vunl:Atrium_Room rdf:type owl:Class ;
+                 rdfs:subClassOf vunl:Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Auditorium_Room
+vunl:Auditorium_Room rdf:type owl:Class ;
+                     rdfs:subClassOf vunl:Teaching_Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Basement
+vunl:Basement rdf:type owl:Class ;
+              rdfs:subClassOf vunl:Floor .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Building
+vunl:Building rdf:type owl:Class ;
+              rdfs:subClassOf <https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#Context> ;
+              owl:disjointWith vunl:Outside .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Cleaning_Room
+vunl:Cleaning_Room rdf:type owl:Class ;
+                   rdfs:subClassOf vunl:Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Copying_Room
+vunl:Copying_Room rdf:type owl:Class ;
+                  rdfs:subClassOf vunl:Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Desk
+vunl:Desk rdf:type owl:Class ;
+          rdfs:subClassOf <https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#Context> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Door
+vunl:Door rdf:type owl:Class ;
+          rdfs:subClassOf <https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#Context> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Electrical_Technical_Room
+vunl:Electrical_Technical_Room rdf:type owl:Class ;
+                               rdfs:subClassOf vunl:Technical_Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Elevator_Room
+vunl:Elevator_Room rdf:type owl:Class ;
+                   rdfs:subClassOf vunl:Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Entrance_Room
+vunl:Entrance_Room rdf:type owl:Class ;
+                   rdfs:subClassOf vunl:Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Floor
+vunl:Floor rdf:type owl:Class ;
+           rdfs:subClassOf <https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#Context> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Hallway_Room
+vunl:Hallway_Room rdf:type owl:Class ;
+                  rdfs:subClassOf vunl:Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Handicap_Wc_Room
+vunl:Handicap_Wc_Room rdf:type owl:Class ;
+                      rdfs:subClassOf vunl:Wc_Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Meeting_Room
+vunl:Meeting_Room rdf:type owl:Class ;
+                  rdfs:subClassOf vunl:Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Niche_Meeting_Room
+vunl:Niche_Meeting_Room rdf:type owl:Class ;
+                        rdfs:subClassOf vunl:Meeting_Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Occupant
+vunl:Occupant rdf:type owl:Class ;
+              rdfs:subClassOf <https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#Context> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Office_Room
+vunl:Office_Room rdf:type owl:Class ;
+                 rdfs:subClassOf vunl:Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Outside
+vunl:Outside rdf:type owl:Class ;
+             rdfs:subClassOf <https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#Context> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Patchbay_Room
+vunl:Patchbay_Room rdf:type owl:Class ;
+                   rdfs:subClassOf vunl:Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Roof
+vunl:Roof rdf:type owl:Class ;
+          rdfs:subClassOf <https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#Context> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Room
+vunl:Room rdf:type owl:Class ;
+          rdfs:subClassOf <https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#Context> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Shaft
+vunl:Shaft rdf:type owl:Class ;
+           rdfs:subClassOf vunl:Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Shared_Office_Room
+vunl:Shared_Office_Room rdf:type owl:Class ;
+                        rdfs:subClassOf vunl:Office_Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Shower_Room
+vunl:Shower_Room rdf:type owl:Class ;
+                 rdfs:subClassOf vunl:Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Single_Office_Room
+vunl:Single_Office_Room rdf:type owl:Class ;
+                        rdfs:subClassOf vunl:Office_Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Space
+vunl:Space rdf:type owl:Class ;
+           rdfs:subClassOf <https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#Context> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Sprinkler_Technical_Room
+vunl:Sprinkler_Technical_Room rdf:type owl:Class ;
+                              rdfs:subClassOf vunl:Technical_Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Studyzone_Room
+vunl:Studyzone_Room rdf:type owl:Class ;
+                    rdfs:subClassOf vunl:Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#TeaKitchen_Room
+vunl:TeaKitchen_Room rdf:type owl:Class ;
+                     rdfs:subClassOf vunl:Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Teaching_Room
+vunl:Teaching_Room rdf:type owl:Class ;
+                   rdfs:subClassOf vunl:Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Technical_Room
+vunl:Technical_Room rdf:type owl:Class ;
+                    rdfs:subClassOf vunl:Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Tunnel_Room
+vunl:Tunnel_Room rdf:type owl:Class ;
+                 rdfs:subClassOf vunl:Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Undecided_Room
+vunl:Undecided_Room rdf:type owl:Class ;
+                    rdfs:subClassOf vunl:Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Vending_Room
+vunl:Vending_Room rdf:type owl:Class ;
+                  rdfs:subClassOf vunl:Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Walkway_Room
+vunl:Walkway_Room rdf:type owl:Class ;
+                  rdfs:subClassOf vunl:Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Wc_Entrance_Room
+vunl:Wc_Entrance_Room rdf:type owl:Class ;
+                      rdfs:subClassOf vunl:Entrance_Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Wc_Room
+vunl:Wc_Room rdf:type owl:Class ;
+             rdfs:subClassOf vunl:Room .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Wing
+vunl:Wing rdf:type owl:Class ;
+          rdfs:subClassOf <https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#Context> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Zone
+vunl:Zone rdf:type owl:Class ;
+          rdfs:subClassOf <https://ontology.hviidnet.com/2020/01/03/privacyvunlV2.ttl#Context> .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Accelerometer
+vunl:Accelerometer rdf:type owl:NamedIndividual ,
+                            <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#AccessPointAssociationLog
+vunl:AccessPointAssociationLog rdf:type owl:NamedIndividual ,
+                                        <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#AverageBMI
+vunl:AverageBMI rdf:type owl:NamedIndividual ,
+                         <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#External> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#BuildingLayout
+vunl:BuildingLayout rdf:type owl:NamedIndividual ,
+                             <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#External> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#CO
+vunl:CO rdf:type owl:NamedIndividual ,
+                 <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#CO2
+vunl:CO2 rdf:type owl:NamedIndividual ,
+                  <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Camera
+vunl:Camera rdf:type owl:NamedIndividual ,
+                     <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#ChannelStateInformation
+vunl:ChannelStateInformation rdf:type owl:NamedIndividual ,
+                                      <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#ClothingInsulation
+vunl:ClothingInsulation rdf:type owl:NamedIndividual ,
+                                 <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Metadata> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#ComfortLevel
+vunl:ComfortLevel rdf:type owl:NamedIndividual ,
+                           <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#ContextLocation
+vunl:ContextLocation rdf:type owl:NamedIndividual ,
+                              <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Metadata> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#CountingLine
+vunl:CountingLine rdf:type owl:NamedIndividual ,
+                           <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#DewPoint
+vunl:DewPoint rdf:type owl:NamedIndividual ,
+                       <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#DoorOpen
+vunl:DoorOpen rdf:type owl:NamedIndividual ,
+                       <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#ElectrodermalActivity
+vunl:ElectrodermalActivity rdf:type owl:NamedIndividual ,
+                                    <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Enthalpy
+vunl:Enthalpy rdf:type owl:NamedIndividual ,
+                       <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#GalvanicSkinResponseFeedback
+vunl:GalvanicSkinResponseFeedback rdf:type owl:NamedIndividual ,
+                                           <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#GasMeter
+vunl:GasMeter rdf:type owl:NamedIndividual ,
+                       <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Gender
+vunl:Gender rdf:type owl:NamedIndividual ,
+                     <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Metadata> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#HeartRate
+vunl:HeartRate rdf:type owl:NamedIndividual ,
+                        <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Height
+vunl:Height rdf:type owl:NamedIndividual ,
+                     <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Metadata> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Humidity
+vunl:Humidity rdf:type owl:NamedIndividual ,
+                       <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Illuminance
+vunl:Illuminance rdf:type owl:NamedIndividual ,
+                          <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#LimbMass
+vunl:LimbMass rdf:type owl:NamedIndividual ,
+                       <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#LimbSurfaceArea
+vunl:LimbSurfaceArea rdf:type owl:NamedIndividual ,
+                              <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#LocationOfDevices
+vunl:LocationOfDevices rdf:type owl:NamedIndividual ,
+                                <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#MetabolicRate
+vunl:MetabolicRate rdf:type owl:NamedIndividual ,
+                            <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Movement
+vunl:Movement rdf:type owl:NamedIndividual ,
+                       <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Noise
+vunl:Noise rdf:type owl:NamedIndividual ,
+                    <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#OccupantActivities
+vunl:OccupantActivities rdf:type owl:NamedIndividual ,
+                                 <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#OccupantBehaviors
+vunl:OccupantBehaviors rdf:type owl:NamedIndividual ,
+                                <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#OccupantCount
+vunl:OccupantCount rdf:type owl:NamedIndividual ,
+                            <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#OccupantIdentity
+vunl:OccupantIdentity rdf:type owl:NamedIndividual ,
+                               <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Metadata> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#OccupantNetwork
+vunl:OccupantNetwork rdf:type owl:NamedIndividual ,
+                              <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Graph> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#OutdoorTemperature
+vunl:OutdoorTemperature rdf:type owl:NamedIndividual ,
+                                 <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#PIR
+vunl:PIR rdf:type owl:NamedIndividual ,
+                  <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#ParticulateMatter25
+vunl:ParticulateMatter25 rdf:type owl:NamedIndividual ,
+                                  <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Photoplethysmography
+vunl:Photoplethysmography rdf:type owl:NamedIndividual ,
+                                   <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Pollution
+vunl:Pollution rdf:type owl:NamedIndividual ,
+                        <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#PowerMeter
+vunl:PowerMeter rdf:type owl:NamedIndividual ,
+                         <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Presence
+vunl:Presence rdf:type owl:NamedIndividual ,
+                       <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Pressure
+vunl:Pressure rdf:type owl:NamedIndividual ,
+                       <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#RadiatorValueSetpoint
+vunl:RadiatorValueSetpoint rdf:type owl:NamedIndividual ,
+                                    <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#RadiatorValvePosition
+vunl:RadiatorValvePosition rdf:type owl:NamedIndividual ,
+                                    <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Relaxation
+vunl:Relaxation rdf:type owl:NamedIndividual ,
+                         <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#ScheduleActivities
+vunl:ScheduleActivities rdf:type owl:NamedIndividual ,
+                                 <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#External> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#ShoulderCircumference
+vunl:ShoulderCircumference rdf:type owl:NamedIndividual ,
+                                    <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Metadata> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#SkeletonJoints
+vunl:SkeletonJoints rdf:type owl:NamedIndividual ,
+                             <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#SkeletonModel
+vunl:SkeletonModel rdf:type owl:NamedIndividual ,
+                            <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#External> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#SkinTemperature
+vunl:SkinTemperature rdf:type owl:NamedIndividual ,
+                              <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Stress
+vunl:Stress rdf:type owl:NamedIndividual ,
+                     <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Switch
+vunl:Switch rdf:type owl:NamedIndividual ,
+                     <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#TVOC
+vunl:TVOC rdf:type owl:NamedIndividual ,
+                   <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Temperature
+vunl:Temperature rdf:type owl:NamedIndividual ,
+                          <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#ThermalCamera
+vunl:ThermalCamera rdf:type owl:NamedIndividual ,
+                            <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#ThermalComfort
+vunl:ThermalComfort rdf:type owl:NamedIndividual ,
+                             <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Metadata> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Thermometer
+vunl:Thermometer rdf:type owl:NamedIndividual ,
+                          <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#TypicalBodyShape
+vunl:TypicalBodyShape rdf:type owl:NamedIndividual ,
+                               <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#External> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#UltrasonicDistance
+vunl:UltrasonicDistance rdf:type owl:NamedIndividual ,
+                                 <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#UltrasonicMicrophone
+vunl:UltrasonicMicrophone rdf:type owl:NamedIndividual ,
+                                   <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#UltrasonicSpeaker
+vunl:UltrasonicSpeaker rdf:type owl:NamedIndividual ,
+                                <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#VariableAirVolume
+vunl:VariableAirVolume rdf:type owl:NamedIndividual ,
+                                <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#VolatileOrganicCompounds
+vunl:VolatileOrganicCompounds rdf:type owl:NamedIndividual ,
+                                       <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#WalkingEvents
+vunl:WalkingEvents rdf:type owl:NamedIndividual ,
+                            <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#WaterMeter
+vunl:WaterMeter rdf:type owl:NamedIndividual ,
+                         <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#WebQueryLog
+vunl:WebQueryLog rdf:type owl:NamedIndividual ,
+                          <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#Wight
+vunl:Wight rdf:type owl:NamedIndividual ,
+                    <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Metadata> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#WindSpeed
+vunl:WindSpeed rdf:type owl:NamedIndividual ,
+                        <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#TimeSeries> .
+
+
+###  https://ontology.hviidnet.com/2020/01/03/smartbuildingprivacyvunl.ttl#YearOfBirth
+vunl:YearOfBirth rdf:type owl:NamedIndividual ,
+                          <https://ontology.hviidnet.com/2020/01/03/privacyvunl.ttl#Metadata> .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( vunl:Atrium_Room
+                vunl:Auditorium_Room
+                vunl:Cleaning_Room
+                vunl:Copying_Room
+                vunl:Elevator_Room
+                vunl:Entrance_Room
+                vunl:Hallway_Room
+                vunl:Handicap_Wc_Room
+                vunl:Meeting_Room
+                vunl:Office_Room
+                vunl:Patchbay_Room
+                vunl:Shaft
+                vunl:Shower_Room
+                vunl:Studyzone_Room
+                vunl:TeaKitchen_Room
+                vunl:Teaching_Room
+                vunl:Technical_Room
+                vunl:Tunnel_Room
+                vunl:Undecided_Room
+                vunl:Vending_Room
+                vunl:Walkway_Room
+                vunl:Wc_Room
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
