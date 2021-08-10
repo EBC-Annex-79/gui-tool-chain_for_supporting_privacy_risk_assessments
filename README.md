@@ -1,11 +1,7 @@
 # GUI for Tool-Chain for Supporting Privacy Risk Assessments
 This repository contains the source code for a the GUI for the tool-Chain for Supporting Privacy Risk Assessments.
 
-The GUI users an API, which should be running if the GUI is to run any analyses. The API can be found here: [Tool-Chain for Supporting Privacy Risk Assessments](https://gitlab.sdu.dk/jehs/tool-chain_for_supporting_privacy_risk_assessments).
-
-## Deployment
-In the file [PrivacyAnalyses.cs](https://gitlab.sdu.dk/jehs/gui-tool-chain_for_supporting_privacy_risk_assessments/-/blob/master/Library/PrivacyModel/PrivacyAnalyses.cs), the configuration for where the API can be found is set, the default port nr is 5002 if moved this needs to be updated.
-
+The GUI users an API, which should be running if the GUI is to run any analyses. The API can be found here: [Tool-Chain for Supporting Privacy Risk Assessments](https://github.com/EBC-Annex-79/Tool-chain_for_supporting_privacy_risk_assessments).
 
 ### Docker
 If you will like to use docker to run the GUI tool-chain. 
